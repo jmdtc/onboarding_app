@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, Text, View, Image } from 'react-native';
+import { StyleSheet, TouchableOpacity, View, Image } from 'react-native';
+import Text from './CustomText';
 import { baseColors } from '../constants/colors';
 import { arrow_back } from '../assets/index';
 
@@ -17,7 +18,7 @@ export function BottomButton({onPress, text, disabled}) {
     },
     text: {
       fontSize: 18,
-      fontWeight: 'bold',
+      fontFamily: 'MuseoMedium',
       alignSelf: 'center',
       color: baseColors.buttonText
     }

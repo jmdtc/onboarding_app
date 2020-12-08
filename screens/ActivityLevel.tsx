@@ -42,6 +42,63 @@ const calculateThumbHeight = function(activityLevel: number, sliderHeight: numbe
   return `${invertedPercentage - androidWeighting}%`
 };
 
+const sliderHeight = 300
+const maxValue = 5
+
+export default function ActivityLevel({navigation}) {
+  const activityLevel = useSelector(selectActivityLevel)
+  const dispatch = useDispatch()
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.headlineContainer}>
+        <Text style={styles.headline}>To get your perfect workouts, tell us your activity level!</Text>
+      </View>
+      <View style={styles.sliderContainer}>
+        <ImageBackground
+          source={clouds_bg}
+          style={styles.image}
+        >
+          <Text style={
+            [
+              styles.activityLevelLabel,
+              {top: calculateThumbHeight(activityLevel, sliderHeight, maxValue)
+            }]
+          }>
+            {activityLevel}
+          </Text>
+          <Slider
+            style={styles.slider}
+            minimumValue={1}
+            maximumValue={maxValue}
+            step={1}
+            value={activityLevel}
+            thumbImage={
+              Platform.OS === 'ios' ? // different implementation and this API gives
+                rocket_ios :          // no way to change the thumb size
+                rocket_android        // so we rely on different images
+            }
+            minimumTrackTintColor='#DEF4F2'
+            maximumTrackTintColor='#9DD6D2'
+            onValueChange={(val) => {
+              dispatch(setActivityLevel(val))
+            }}
+          />
+        </ImageBackground>
+      </View>
+      <View style={styles.descriptionContainer}>
+        <Text style={styles.descriptionText}>
+          {getActivityLevelDescription(activityLevel)}
+        </Text>
+      </View>
+      <ContinueButton
+        navigation={navigation}
+        nextScreen='Success Screen'
+      />
+    </View>
+  );
+};
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -92,62 +149,3 @@ const styles = StyleSheet.create({
     fontFamily: 'MuseoMedium',
   },
 });
-
-const sliderHeight = 300
-const maxValue = 5
-
-const ActivityLevel = ({navigation}) => {
-  const activityLevel = useSelector(selectActivityLevel)
-  const dispatch = useDispatch()
-
-  return (
-    <View style={styles.container}>
-      <View style={styles.headlineContainer}>
-        <Text style={styles.headline}>To get your perfect workouts, tell us your activity level!</Text>
-      </View>
-      <View style={styles.sliderContainer}>
-        <ImageBackground
-          source={clouds_bg}
-          style={styles.image}
-        >
-          <Text style={
-            [
-              styles.activityLevelLabel,
-              {top: calculateThumbHeight(activityLevel, sliderHeight, maxValue)
-            }]
-          }>
-            {activityLevel}
-          </Text>
-          <Slider
-            style={styles.slider}
-            minimumValue={1}
-            maximumValue={maxValue}
-            step={1}
-            value={activityLevel}
-            thumbImage={
-              Platform.OS === 'ios' ? // different implementation and this API gives 
-                rocket_ios :          // no way to change the thumb size
-                rocket_android        // so we rely on different images
-            }
-            minimumTrackTintColor='#DEF4F2'
-            maximumTrackTintColor='#9DD6D2'
-            onValueChange={(val) => {
-              dispatch(setActivityLevel(val))
-            }}
-          />
-        </ImageBackground>
-      </View>
-      <View style={styles.descriptionContainer}>
-        <Text style={styles.descriptionText}>
-          {getActivityLevelDescription(activityLevel)}
-        </Text>
-      </View>
-      <ContinueButton
-        navigation={navigation}
-        nextScreen='Success Screen'
-      />
-    </View>
-  );
-};
-
-export default ActivityLevel;

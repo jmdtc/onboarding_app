@@ -5,37 +5,7 @@ import { selectOnboarding } from '../slices/onboardingSlice';
 import useObjectSelector from '../slices/useObjectSelector';
 import { getActivityLevelDescription } from './ActivityLevel'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingHorizontal: 32,
-  },
-  successMessageContainer: {
-    flex: 0.5,
-    justifyContent: 'flex-end',
-    paddingBottom: 16
-  },
-  successMessage: {
-    fontFamily: 'MuseoMedium',
-    fontSize: 16
-  },
-  recapContainer: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-  },
-  goalSectionContainer: {
-    paddingVertical: 8
-  },
-  title: {
-    textTransform: 'capitalize',
-    fontFamily: 'MuseoMedium',
-    paddingBottom: 4
-  }
-});
-
-const SuccessScreen = ({navigation}) => {
+export default function SuccessScreen({navigation}) {
   const onboardingSummary = useObjectSelector(selectOnboarding)
 
   return (
@@ -126,4 +96,32 @@ const SuccessScreen = ({navigation}) => {
   );
 };
 
-export default SuccessScreen;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 32,
+  },
+  successMessageContainer: {
+    flex: 0.5,
+    justifyContent: 'flex-end',
+    paddingBottom: 16
+  },
+  successMessage: {
+    fontFamily: 'MuseoMedium',
+    fontSize: 16
+  },
+  recapContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+  },
+  goalSectionContainer: {
+    paddingVertical: 8
+  },
+  title: {
+    textTransform: 'capitalize',
+    fontFamily: 'MuseoMedium',
+    paddingBottom: 4
+  }
+});

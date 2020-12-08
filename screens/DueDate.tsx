@@ -9,13 +9,13 @@ import { bg_img } from '../assets/index';
 
 const getDateText = function(date: string): string {
   const dateOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'}
-  if (typeof Platform !== undefined && Platform.OS === 'android') {
+  if (Platform.OS === 'android') {
     return 'Your estimated due date is ' + new Date(date).toLocaleDateString('en-GB', dateOptions)
   }
   return 'Select your estimated due date'
 }
 
-const DueDate = ({navigation}) => {
+export default function DueDate({navigation}) {
   const date = useSelector(selectDueDate)
   const dispatch = useDispatch()
 
@@ -90,5 +90,3 @@ const styles = StyleSheet.create({
     fontFamily: 'MuseoMedium'
   },
 });
-
-export default DueDate;

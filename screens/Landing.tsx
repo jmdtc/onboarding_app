@@ -9,64 +9,7 @@ import useObjectSelector from '../slices/useObjectSelector';
 import { ContinueButton } from '../components/Buttons';
 import { bg_img } from '../assets/index';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'space-between',
-  },
-  content: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
-  },
-  imageContainer: {
-    flex: 10,
-  },
-  image: {
-    width: '100%',
-    height: '100%'
-  },
-  checkboxesOverlay: {
-    position: 'absolute',
-    bottom: 0,
-    height: '50%',
-    width: '100%',
-    backgroundColor: 'rgba(255, 255, 255, 0.9)',
-    paddingHorizontal: 16
-  },
-  headlineContainer: {
-    paddingTop: 8,
-    width: '100%',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1
-  },
-  headline: {
-    fontSize: 24
-  },
-  tagline: {
-    fontSize: 16
-  },
-  chechboxesContainer: {
-    paddingBottom: 12,
-    flex: 3,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  checkboxLine: {
-    flexDirection: 'row',
-    flexGrow: 1,
-    alignItems: 'center',
-    width: '80%',
-  },
-  checkboxText: {
-    paddingHorizontal: 16,
-    fontSize: 16
-  }
-});
-
-const Landing = ({navigation}) => {
+export default function Landing({navigation}) {
   const dispatch = useDispatch()
   const goals = useObjectSelector(selectGoals)
 
@@ -129,4 +72,59 @@ const Landing = ({navigation}) => {
   );
 };
 
-export default Landing;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'space-between',
+  },
+  content: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
+  imageContainer: {
+    flex: 10,
+  },
+  image: {
+    width: '100%',
+    height: '100%'
+  },
+  checkboxesOverlay: {
+    position: 'absolute',
+    bottom: 0,
+    height: '50%',
+    width: '100%',
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    paddingHorizontal: 16
+  },
+  headlineContainer: {
+    paddingTop: 8,
+    width: '100%',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1
+  },
+  headline: {
+    fontSize: 24
+  },
+  tagline: {
+    fontSize: 16
+  },
+  chechboxesContainer: {
+    paddingBottom: 12,
+    flex: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  checkboxLine: {
+    flexDirection: 'row',
+    flexGrow: 1,
+    alignItems: 'center',
+    width: '80%',
+  },
+  checkboxText: {
+    paddingHorizontal: 16,
+    fontSize: 16
+  }
+});
