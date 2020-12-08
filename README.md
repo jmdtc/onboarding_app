@@ -3,6 +3,7 @@
 
 ```
 git clone https://github.com/jmdtc/onboarding_app.git
+cd onboarding_app
 yarn install (should install automatically expo otherwise you need to install it globally)
 yarn start
 ```
